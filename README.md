@@ -172,6 +172,40 @@ Blockchain Ledger & DAO Governance
    npx hardhat node
    ```
 
+### API Endpoints
+
+#### Market API
+
+- **`GET /api/market/data`** - Get overall market data (total volume, total trades, etc.)
+- **`GET /api/market/summary`** - Get market summary with token count, trade count, volume, and generation timestamp
+  ```bash
+  curl http://localhost:3001/api/market/summary
+  ```
+  Response:
+  ```json
+  {
+    "tokensListed": 247,
+    "totalTrades": 5432,
+    "totalVolume": "12400000",
+    "generatedAt": "2026-04-22T14:30:45.123Z"
+  }
+  ```
+
+- **`GET /api/market/tokens`** - Get paginated list of tokens with optional search
+  ```bash
+  curl "http://localhost:3001/api/market/tokens?limit=50&offset=0&search=BTC"
+  ```
+
+- **`GET /api/market/tokens/:symbol`** - Get token details by symbol
+  ```bash
+  curl http://localhost:3001/api/market/tokens/BTC
+  ```
+
+- **`GET /api/market/history/:symbol`** - Get price history for a token
+  ```bash
+  curl "http://localhost:3001/api/market/history/BTC?period=24h"
+  ```
+
 ## 📁 Project Structure
 
 ```
